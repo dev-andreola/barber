@@ -34,7 +34,7 @@ model Barbershop {
   updatedAt   DateTime            @updatedAt
   services    BarbershopService[]
 }
-
+ 
 model BarbershopService {
   id           String     @id @default(uuid())
   name         String
