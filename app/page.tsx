@@ -11,6 +11,11 @@ import BarbershopIcon from "./_components/barbershop-item"
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({})
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  })
 
   return (
     <div>
@@ -64,15 +69,22 @@ export default async function Home() {
         </Card>
       </div>
 
-      <div className="">
-        <h2 className="p-5 text-xs font-bold uppercase text-gray-400">
-          Recomendados
-        </h2>
-        <div className="flex gap-4 overflow-auto px-5 [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
-            <BarbershopIcon key={barbershop.id} barbershop={barbershop} />
-          ))}
-        </div>
+      <h2 className="p-5 text-xs font-bold uppercase text-gray-400">
+        Recomendados
+      </h2>
+      <div className="flex gap-4 overflow-auto px-5 [&::-webkit-scrollbar]:hidden">
+        {barbershops.map((barbershop) => (
+          <BarbershopIcon key={barbershop.id} barbershop={barbershop} />
+        ))}
+      </div>
+
+      <h2 className="p-5 text-xs font-bold uppercase text-gray-400">
+        Populares
+      </h2>
+      <div className="flex gap-4 overflow-auto px-5 pb-5 [&::-webkit-scrollbar]:hidden">
+        {popularBarbershops.map((barbershop) => (
+          <BarbershopIcon key={barbershop.id} barbershop={barbershop} />
+        ))}
       </div>
     </div>
   )
