@@ -86,6 +86,16 @@ export default async function Home() {
           <BarbershopIcon key={barbershop.id} barbershop={barbershop} />
         ))}
       </div>
+
+      <footer>
+        <Card className="rounded-b-none">
+          <CardContent className="p-5">
+            <p className="text-sm text-gray-400">
+              © 2024 Copyright <span className="font-bold">FSW Barber</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   )
 }
