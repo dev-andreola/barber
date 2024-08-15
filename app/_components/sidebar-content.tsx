@@ -1,10 +1,17 @@
-import { CalendarIcon, HomeIcon, LogOutIcon } from "lucide-react"
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { Button } from "./ui/button"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
-import { Avatar, AvatarImage } from "./ui/avatar"
 import Link from "next/link"
 import { quickSearchOptions } from "../_constants/quick-search-option"
 import Image from "next/image"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog"
 
 const SidebarContent = () => {
   return (
@@ -13,15 +20,41 @@ const SidebarContent = () => {
         <SheetTitle className="text-left">Menu</SheetTitle>
       </SheetHeader>
 
-      <div className="flex items-center gap-3 border-b py-5">
-        <Avatar>
+      <div className="flex items-center justify-between gap-3 border-b py-5">
+        <p className="font-bold">Olá, faça seu login!</p>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button size={"icon"}>
+              <LogInIcon />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="w-[90%]">
+            <DialogHeader>
+              <DialogTitle>Faça login na plataforma</DialogTitle>
+              <DialogDescription>
+                Conecte-se usando sua conta do Google.
+              </DialogDescription>
+            </DialogHeader>
+
+            <Button variant={"outline"} className="gap-1 font-bold">
+              <Image
+                src={"/google.svg"}
+                width={18}
+                height={18}
+                alt="Ícone Google"
+              ></Image>
+              Google
+            </Button>
+          </DialogContent>
+        </Dialog>
+        {/* <Avatar>
           <AvatarImage src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></AvatarImage>
         </Avatar>
 
         <div>
           <p className="font-bold">Vitor Andreola</p>
           <p className="text-xs text-gray-400">vitor@andreola.io</p>
-        </div>
+        </div> */}
       </div>
 
       <div className="flex flex-col gap-2 border-b py-5">
